@@ -7,20 +7,20 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 
 
-ano1 = [1,2,3,4,5,6,7,8]
-producao1 = [7, 10, 6, 8, 10, 12, 11, 13]
+ano = [1,2,3,4,5,6,7,8]
+producao = [7, 10, 6, 8, 10, 12, 11, 13]
 
 
 # Criando um DataFrame
-# df = pd.DataFrame({'distancia': distancia, 'velocidade': velocidade})
-df = pd.DataFrame({'ano1': ano1, 'producao1': producao1})
+
+df = pd.DataFrame({'ano': ano, 'producao': producao})
 
 # Adicionando uma constante para o termo independente na regressão
-# X = sm.add_constant(df['distancia'])
-X = sm.add_constant(df['ano1'])
+
+X = sm.add_constant(df['ano'])
 
 # Ajustando o modelo de regressão linear
-modelo = sm.OLS(df['producao1'], X).fit()
+modelo = sm.OLS(df['producao'], X).fit()
 
 # Imprimindo os resultados
 print(modelo.summary())
