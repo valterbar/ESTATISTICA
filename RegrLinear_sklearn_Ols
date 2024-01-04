@@ -58,3 +58,10 @@ plt.title('Regressão Linear para Série Temporal')
 plt.legend()
 plt.show()
 
+##apos encontrar a equacao DA RL , ADAPTAR VALORES, PODERMOS PREDIZER PROX ANO
+##abaixo, valores encontro na nova reta da reg linear podendo predizer o prox ano (9)
+x =np.arange(1,10)
+#EQUACAO ENCONTRADA COM DADOS ACIMA
+y = (0.79 *x)+ 6.03
+
+print(x,y)
