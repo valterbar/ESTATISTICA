@@ -1,0 +1,30 @@
+import numpy as np
+from sklearn.linear_model import LinearRegression
+import matplotlib.pyplot as plt
+
+# Dados ( onde esta o ano, e melhor colocar sequencia [1,2,3,4,5,6,7,8]
+ano = np.array([1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987]).reshape(-1, 1)
+producao = np.array([7, 10, 6, 8, 10, 12, 11, 13])
+
+# Criando um modelo de regressão linear
+modelo = LinearRegression()
+
+# Treinando o modelo
+modelo.fit(ano, producao)
+
+# Fazendo previsões para os anos fornecidos
+anos_previsao = np.array([1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987]).reshape(-1, 1)
+producao_prevista = modelo.predict(anos_previsao)
+
+# Imprimindo os coeficientes do modelo
+print(f'Coeficiente angular (inclinação): {modelo.coef_[0]}')
+print(f'Coeficiente linear (interceptação): {modelo.intercept_}')
+
+# Plotando os resultados
+plt.scatter(ano, producao, label='Dados reais')
+plt.plot(anos_previsao, producao_prevista, label='Regressão linear', color='red')
+plt.xlabel('Ano')
+plt.ylabel('Producao')
+plt.title('Regressão Linear para Série Temporal')
+plt.legend()
+plt.show()
