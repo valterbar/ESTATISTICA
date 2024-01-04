@@ -1,7 +1,33 @@
 ##regressao linear serie temporais 
+
+import pandas as pd
+import statsmodels.api as sm
 import numpy as np
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
+
+
+ano1 = [1,2,3,4,5,6,7,8]
+producao1 = [7, 10, 6, 8, 10, 12, 11, 13]
+
+
+# Criando um DataFrame
+# df = pd.DataFrame({'distancia': distancia, 'velocidade': velocidade})
+df = pd.DataFrame({'ano1': ano1, 'producao1': producao1})
+
+# Adicionando uma constante para o termo independente na regressão
+# X = sm.add_constant(df['distancia'])
+X = sm.add_constant(df['ano1'])
+
+# Ajustando o modelo de regressão linear
+modelo = sm.OLS(df['producao1'], X).fit()
+
+# Imprimindo os resultados
+print(modelo.summary())
+
+
+
+
 
 # Dados ( onde esta o ano, e melhor colocar sequencia [1,2,3,4,5,6,7,8]
 ##ano = np.array([1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987]).reshape(-1, 1)
@@ -31,3 +57,4 @@ plt.ylabel('Producao')
 plt.title('Regressão Linear para Série Temporal')
 plt.legend()
 plt.show()
+
